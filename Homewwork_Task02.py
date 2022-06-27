@@ -14,34 +14,34 @@ def print_board(board):
 
 def tic_tac_toe_game():
     board = init_board
-    turns_counter = 0
+    turns = 0
     flag = True
 
-    while True:  
+    while True:
 
-        turns_counter += 1
+        turns += 1
 
         while True:
             
-            if turns_counter % 2:
-                print(f'Turn: {turns_counter} for CROSS')
+            if turns % 2:
+                print(f'Turn: {turns} for CROSS')
                 flag = True
             else:
-                print(f'Turn: {turns_counter} for ZERO')
+                print(f'Turn: {turns} for ZERO')
                 flag = False
 
             print('Enter a row:')
             row = input()
             print('Enter a col:')
             col = input()
-            point = int(row), int(col)
+            cell = int(row), int(col)
 
-            if board[point[0]][point[1]] == 0:
-                board[point[0]][point[1]] = -1 if flag else 1
+            if board[cell[0]][cell[1]] == 0:
+                board[cell[0]][cell[1]] = -1 if flag else 1
                 if flag:
-                    print(f'CROSS player signed {point}')
+                    print(f'CROSS player signed {cell}')
                 else:
-                    print(f'ZERO player signed {point}')
+                    print(f'ZERO player signed {cell}')
                 break
             else:
                 print(f'that cell already signed')
@@ -50,7 +50,7 @@ def tic_tac_toe_game():
 
         # checks for win
 
-        for i in range(3):  # verticals & horizontals, checks whether three crosses or zeroes in a row or a column
+        for i in range(3):  # verticals & horizontals
             sum1 = reduce(lambda x, y: x + y, [board[0][i], board[1][i], board[2][i]])
             sum2 = reduce(lambda x, y: x + y, [board[i][0], board[i][1], board[i][2]])
             if sum1 == 3 or sum2 == 3:
@@ -72,7 +72,7 @@ def tic_tac_toe_game():
             print(f'CROSS player wins')
             break
 
-        if turns_counter == 9:
+        if turns == 9:
             print('withdraw')
             break
 
