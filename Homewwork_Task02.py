@@ -8,7 +8,14 @@ init_board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
 def print_board(board):
     for row in range(len(board)):
         for col in range(len(board[row])):
-            print("{:4d}".format(board[row][col]), end="")
+            cell = ""
+            if board[row][col] == 0:
+                cell = "-"
+            elif board[row][col] == -1:
+                cell = "X"
+            else:
+                cell = "O"
+            print("{:4}".format(cell), end="")
         print()
 
 
